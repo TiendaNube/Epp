@@ -61,8 +61,10 @@
         {
             $fc = stream_context_create(array(
                 'ssl' => array(
-		            'allow_self_signed'=>'TRUE',
-		            'local_cert' => $this->_cert
+			    'verify_peer' => true,
+			    'verify_depth' => 5,
+		            'cafile'=> __DIR__ . '/root.pem',
+		            'local_cert' => __DIR__ . '/client.pem',
                 )
 			));
 
