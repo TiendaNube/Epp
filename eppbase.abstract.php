@@ -111,7 +111,7 @@
 
         public function login($user = null, $password = null, $new_password = null, $language = 'pt')
         {
-            $xml = file_get_contents('./templates/login.xml');
+            $xml = file_get_contents(__DIR__.'/templates/login.xml');
             
             if(strlen($new_password) >= 5)
             {
@@ -136,7 +136,7 @@
 
         public function logout()
         {
-            $xml = file_get_contents('./templates/logout.xml');
+            $xml = file_get_contents(__DIR__.'/templates/logout.xml');
             
             $xml = str_replace('$(clTRID)$', '<clTRID>'.$this->generate_id().'</clTRID>', $xml);
             
