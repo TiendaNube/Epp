@@ -16,6 +16,10 @@
      */
     class Epp extends EppBase implements iEpp
     {
+        public function __construct($endpoint = null, $cert = null){
+            $this->_host = $endpoint ?: $this->_host;
+            $this->_cert = $cert ?: $this->_cert;
+        }
         // {{{ contact_info()
 
         /**

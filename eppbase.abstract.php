@@ -45,7 +45,7 @@
          * @var string
          * @access protected
          */
-        protected $_cert        = 'client.pem';
+        protected $_cert        = __DIR__ . '/client.pem';;
 
         /**
          * Account password in Registro.br
@@ -64,7 +64,7 @@
 			    'verify_peer' => true,
 			    'verify_depth' => 5,
 		            'cafile'=> __DIR__ . '/root.pem',
-		            'local_cert' => __DIR__ . '/client.pem',
+		            'local_cert' => $this->_cert,
                 )
 			));
 
