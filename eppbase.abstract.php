@@ -45,7 +45,7 @@
          * @var string
          * @access protected
          */
-        protected $_cert        = __DIR__ . '/client.pem';;
+        protected $_cert        = __DIR__ . '/client.pem';
 
         /**
          * Account password in Registro.br
