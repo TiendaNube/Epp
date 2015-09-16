@@ -320,12 +320,6 @@
                 'org_roid' => $response['epp']['response']['resData']['contact:infData']['contact:roid'],
                 'org_name' => $response['epp']['response']['resData']['contact:infData']['contact:postalInfo']['contact:name'],
                 'org_status' => $response['epp']['response']['resData']['contact:infData']['contact:status'],
-                'org_address_1' => $response['epp']['response']['resData']['contact:infData']['contact:postalInfo']['contact:addr']['contact:street'][0],
-                'client_address_2' => $response['epp']['response']['resData']['contact:infData']['contact:postalInfo']['contact:addr']['contact:street'][1],
-                'org_city' => $response['epp']['response']['resData']['contact:infData']['contact:postalInfo']['contact:addr']['contact:city'],
-                'org_state' => $response['epp']['response']['resData']['contact:infData']['contact:postalInfo']['contact:addr']['contact:sp'],
-                'org_zipcode' => $response['epp']['response']['resData']['contact:infData']['contact:postalInfo']['contact:addr']['contact:pc'],
-                'org_country' => $response['epp']['response']['resData']['contact:infData']['contact:postalInfo']['contact:addr']['contact:cc'],
                 'org_phone' => $response['epp']['response']['resData']['contact:infData']['contact:voice'],
                 'org_email' => $response['epp']['response']['resData']['contact:infData']['contact:email'],
                 'org_client_id' => $response['epp']['response']['resData']['contact:infData']['contact:clID'],
@@ -338,7 +332,21 @@
                     'org_contact_type' => $response['epp']['response']['extension']['brorg:infData']['brorg:contact_attr']['type']
                 )
             );
-            
+
+            try{
+                $address = $response['epp']['response']['resData']['contact:infData']['contact:postalInfo']['contact:addr'];
+                $address_data = [
+                    'org_address_1' => $address['contact:street'][0],
+                    'client_address_2' => $address['contact:street'][1],
+                    'org_city' => $address['contact:city'],
+                    'org_state' => $address['contact:sp'],
+                    'org_zipcode' => $address['contact:pc'],
+                    'org_country' => $address['contact:cc'],
+                ];
+
+                $data = array_merge($data, $address_data);
+            }catch(Exception $error){};
+
             return $data;
         }
         // }}}
