@@ -14,7 +14,6 @@
 	$(nameservers)$
         $(registrant)$
 	$(other_contacts)$
-	$(auth_info)$
       </domain:create>
     </create>
     $(ext_begin)$ 
