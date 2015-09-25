@@ -110,7 +110,7 @@
         )
         {
             $xml = file_get_contents(__DIR__.'/templates/contact_create.xml');
-            
+            $client_name = substr($client_name, 0, 40);
             $postal_info = "<contact:postalInfo type=\"loc\">
                                 <contact:name>{$client_name}</contact:name>
                                 <contact:org></contact:org>
@@ -831,16 +831,16 @@
                             </domain:hostAttr>
                         </domain:add>";*/
 
-            $chg = "<domain:rem>
+            /*$chg = "<domain:rem>
                         <domain:hostAttr>
                             <domain:hostName>{$domain_data['domain_dns']['dns_1']}</domain:hostName>
                         </domain:hostAttr>
                         <domain:hostAttr>
                             <domain:hostName>{$domain_data['domain_dns']['dns_2']}</domain:hostName>
                         </domain:hostAttr>
-                    </domain:rem>
+                    </domain:rem>*/
                     
-                    <domain:add>
+            $chg = "<domain:add>
                         <domain:hostAttr>
                             <domain:hostName>{$dns_1}</domain:hostName>
                         </domain:hostAttr>
